@@ -1,5 +1,13 @@
 'use client';
 
+/**
+ * Componente de gestión de edificios.
+ * 
+ * - Obtener, paginar y mostrar los registros de edificios desde la API.
+ * - Proveer operaciones CRUD: creación, edición y eliminación.
+ * - Renderizar un formulario modal para captura y actualización de datos.
+ * - Integrarse con el componente DataTable para visualizar la lista.
+ */
 import React, { useEffect, useState } from 'react';
 import {
     CCard,
@@ -21,13 +29,30 @@ import { buildingService } from '@/lib/api/services';
 import DataTable from '@/components/DataTable';
 import { toast } from 'react-toastify';
 
+/**
+ * Componente principal de la vista de Edificios.
+ * Gestiona estado, paginación, operaciones CRUD y renderizado general.
+ */
 const Buildings = () => {
+    /** Lista de edificios cargados desde el backend */
     const [buildings, setBuildings] = useState([]);
+
+    /** Indicador de carga de datos */
     const [loading, setLoading] = useState(true);
+
+    /** Página actual para la paginación */
     const [currentPage, setCurrentPage] = useState(1);
+
+    /** Total de páginas disponibles */
     const [totalPages, setTotalPages] = useState(1);
+
+    /** Control del modal de creación/edición */
     const [showModal, setShowModal] = useState(false);
+
+    /** Edificio actualmente editado */
     const [editingBuilding, setEditingBuilding] = useState<any>(null);
+
+    /** Estado del formulario */
     const [formData, setFormData] = useState({
         name: '',
         address: '',
@@ -35,6 +60,10 @@ const Buildings = () => {
         totalUnits: '',
     });
 
+    /**
+     * Obtiene los edificios desde la API considerando la paginación.
+     * @param page número de página (basado en 1)
+     */
     const fetchBuildings = async (page = currentPage) => {
         setLoading(true);
         try {
@@ -48,10 +77,15 @@ const Buildings = () => {
         }
     };
 
+    /** Carga inicial de datos y actualización al cambiar de página */
     useEffect(() => {
         fetchBuildings();
     }, [currentPage]);
 
+    /**
+     * Prepara el formulario para editar un edificio existente.
+     * @param building registro seleccionado
+     */
     const handleEdit = (building: any) => {
         setEditingBuilding(building);
         setFormData({
@@ -63,6 +97,9 @@ const Buildings = () => {
         setShowModal(true);
     };
 
+    /**
+     * Elimina un edificio previa confirmación del usuario.
+     */
     const handleDelete = async (building: any) => {
         if (window.confirm('Are you sure you want to delete this building?')) {
             try {
@@ -75,6 +112,9 @@ const Buildings = () => {
         }
     };
 
+    /**
+     * Maneja el envío del formulario para crear o actualizar un registro.
+     */
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -93,6 +133,7 @@ const Buildings = () => {
         }
     };
 
+    /** Restablece valores del formulario */
     const resetForm = () => {
         setFormData({
             name: '',
@@ -103,6 +144,7 @@ const Buildings = () => {
         setEditingBuilding(null);
     };
 
+    /** Definición de columnas mostradas en la tabla */
     const columns = [
         { key: 'id', label: 'ID' },
         { key: 'name', label: 'Name' },
@@ -144,6 +186,7 @@ const Buildings = () => {
                 </CCol>
             </CRow>
 
+            {/* Modal de creación/edición */}
             <CModal visible={showModal} onClose={() => setShowModal(false)}>
                 <CModalHeader>
                     <CModalTitle>{editingBuilding ? 'Edit' : 'Add'} Building</CModalTitle>
@@ -160,6 +203,7 @@ const Buildings = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-3">
                             <CFormLabel htmlFor="address">Address</CFormLabel>
                             <CFormInput
@@ -170,6 +214,7 @@ const Buildings = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-3">
                             <CFormLabel htmlFor="floors">Floors</CFormLabel>
                             <CFormInput
@@ -180,6 +225,7 @@ const Buildings = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-3">
                             <CFormLabel htmlFor="totalUnits">Total Units</CFormLabel>
                             <CFormInput
@@ -191,6 +237,7 @@ const Buildings = () => {
                             />
                         </div>
                     </CModalBody>
+
                     <CModalFooter>
                         <CButton color="secondary" onClick={() => setShowModal(false)}>
                             Cancel

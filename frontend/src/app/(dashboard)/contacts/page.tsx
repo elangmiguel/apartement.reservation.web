@@ -1,5 +1,13 @@
 'use client';
 
+/**
+ * Gestión de Contactos
+ * 
+ * Página cliente responsable de administrar la entidad Contact. Implementa
+ * operaciones CRUD mediante un servicio API dedicado y presenta los datos en
+ * una tabla paginada. Incluye un formulario modal para creación y edición.
+ */
+
 import React, { useEffect, useState } from 'react';
 import {
     CCard,
@@ -23,13 +31,22 @@ import { contactService } from '@/lib/api/services';
 import DataTable from '@/components/DataTable';
 import { toast } from 'react-toastify';
 
+/**
+ * Componente principal de la vista de Contactos.
+ * Gestiona estado, paginación, operaciones CRUD y renderizado general.
+ */
 const Contacts = () => {
+
+    /**
+     * Estado general del componente.
+     */
     const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [showModal, setShowModal] = useState(false);
     const [editingContact, setEditingContact] = useState<any>(null);
+
     const [formData, setFormData] = useState({
         personId: '',
         type: 'EMAIL',
@@ -37,23 +54,35 @@ const Contacts = () => {
         isPrimary: false,
     });
 
+    /**
+     * fetchContacts()
+     * Obtiene contactos paginados desde la API.
+     * Actualiza la tabla y el estado de paginación.
+     */
     const fetchContacts = async (page = currentPage) => {
         setLoading(true);
         try {
             const response = await contactService.getAll(page - 1, 10);
             setContacts(response.docs || []);
             setTotalPages(response.totalPages || 1);
-        } catch (error) {
+        } catch {
             toast.error('Failed to load contacts');
         } finally {
             setLoading(false);
         }
     };
 
+    /**
+     * Carga inicial y recarga cuando cambia la página.
+     */
     useEffect(() => {
         fetchContacts();
     }, [currentPage]);
 
+    /**
+     * handleEdit()
+     * Prepara el formulario para editar un contacto existente.
+     */
     const handleEdit = (contact: any) => {
         setEditingContact(contact);
         setFormData({
@@ -65,20 +94,31 @@ const Contacts = () => {
         setShowModal(true);
     };
 
+    /**
+     * handleDelete()
+     * Solicita confirmación y elimina un contacto a través del servicio API.
+     * Actualiza el listado tras la operación.
+     */
     const handleDelete = async (contact: any) => {
         if (window.confirm('Are you sure you want to delete this contact?')) {
             try {
                 await contactService.delete(contact.id);
                 toast.success('Contact deleted successfully');
                 fetchContacts();
-            } catch (error) {
+            } catch {
                 toast.error('Failed to delete contact');
             }
         }
     };
 
+    /**
+     * handleSubmit()
+     * Gestiona creación o actualización según exista o no editingContact.
+     * Refresca datos y limpia el formulario al finalizar.
+     */
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
         try {
             if (editingContact) {
                 await contactService.update(editingContact.id, formData);
@@ -87,14 +127,19 @@ const Contacts = () => {
                 await contactService.create(formData);
                 toast.success('Contact created successfully');
             }
+
             setShowModal(false);
             fetchContacts();
             resetForm();
-        } catch (error) {
+        } catch {
             toast.error('Failed to save contact');
         }
     };
 
+    /**
+     * resetForm()
+     * Limpia campos del formulario y resetea estado de edición.
+     */
     const resetForm = () => {
         setFormData({
             personId: '',
@@ -105,6 +150,9 @@ const Contacts = () => {
         setEditingContact(null);
     };
 
+    /**
+     * Columnas del DataTable, con formateo específico para type e isPrimary.
+     */
     const columns = [
         { key: 'id', label: 'ID' },
         { key: 'personId', label: 'Person ID' },
@@ -129,6 +177,12 @@ const Contacts = () => {
         },
     ];
 
+    /**
+     * Render principal:
+     * - Tarjeta con listado de contactos
+     * - Tabla con paginación
+     * - Modal para creación/edición
+     */
     return (
         <>
             <CRow>
@@ -146,6 +200,7 @@ const Contacts = () => {
                                 Add Contact
                             </CButton>
                         </CCardHeader>
+
                         <CCardBody>
                             <DataTable
                                 columns={columns}
@@ -166,6 +221,7 @@ const Contacts = () => {
                 <CModalHeader>
                     <CModalTitle>{editingContact ? 'Edit' : 'Add'} Contact</CModalTitle>
                 </CModalHeader>
+
                 <CForm onSubmit={handleSubmit}>
                     <CModalBody>
                         <div className="mb-3">
@@ -178,6 +234,7 @@ const Contacts = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-3">
                             <CFormLabel htmlFor="type">Type</CFormLabel>
                             <CFormSelect
@@ -190,6 +247,7 @@ const Contacts = () => {
                                 <option value="ADDRESS">Address</option>
                             </CFormSelect>
                         </div>
+
                         <div className="mb-3">
                             <CFormLabel htmlFor="value">Value</CFormLabel>
                             <CFormInput
@@ -200,6 +258,7 @@ const Contacts = () => {
                                 required
                             />
                         </div>
+
                         <div className="mb-3 form-check">
                             <input
                                 type="checkbox"
@@ -213,6 +272,7 @@ const Contacts = () => {
                             </label>
                         </div>
                     </CModalBody>
+
                     <CModalFooter>
                         <CButton color="secondary" onClick={() => setShowModal(false)}>
                             Cancel

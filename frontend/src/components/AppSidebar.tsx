@@ -19,11 +19,25 @@ import {
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+/**
+ * Componente de barra lateral de navegación para la aplicación.
+ * Implementado como Client Component debido al uso de hooks.
+ * Ofrece navegación estructurada en grupos y resalta la ruta activa.
+ */
 const AppSidebar = () => {
+    /**
+     * Hook de Next.js que permite obtener la ruta actual.
+     * Utilizado para activar dinámicamente los elementos del menú.
+     */
     const pathname = usePathname();
 
     return (
+        /**
+         * Contenedor principal del sidebar.
+         * `position="fixed"` asegura que permanezca visible durante la navegación.
+         */
         <CSidebar className="border-end" position="fixed" unfoldable={false}>
+            {/** Encabezado del sidebar con marca y enlace al inicio */}
             <CSidebarHeader className="border-bottom">
                 <Link href="/" passHref legacyBehavior>
                     <CSidebarBrand>
@@ -32,12 +46,17 @@ const AppSidebar = () => {
                     </CSidebarBrand>
                 </Link>
             </CSidebarHeader>
+
+            {/** Contenedor de navegación principal */}
             <CSidebarNav>
+                {/** Enlace al dashboard principal */}
                 <Link href="/dashboard" passHref legacyBehavior>
-                    <CNavItem component="a" active={pathname === '/dashboard'}>
+                    <CNavItem active={pathname === '/dashboard'}>
                         <CIcon customClassName="nav-icon" icon={cilSpeedometer} /> Dashboard
                     </CNavItem>
                 </Link>
+
+                {/** Grupo: Management */}
                 <CNavGroup
                     toggler={
                         <>
@@ -46,21 +65,25 @@ const AppSidebar = () => {
                     }
                 >
                     <Link href="/apartments" passHref legacyBehavior>
-                        <CNavItem component="a" active={pathname.startsWith('/apartments')}>
+                        <CNavItem active={pathname.startsWith('/apartments')}>
                             <span className="nav-icon"><span className="nav-icon-bullet"></span></span> Apartments
                         </CNavItem>
                     </Link>
+
                     <Link href="/buildings" passHref legacyBehavior>
-                        <CNavItem component="a" active={pathname.startsWith('/buildings')}>
+                        <CNavItem active={pathname.startsWith('/buildings')}>
                             <span className="nav-icon"><span className="nav-icon-bullet"></span></span> Buildings
                         </CNavItem>
                     </Link>
+
                     <Link href="/reservations" passHref legacyBehavior>
-                        <CNavItem component="a" active={pathname.startsWith('/reservations')}>
+                        <CNavItem active={pathname.startsWith('/reservations')}>
                             <span className="nav-icon"><span className="nav-icon-bullet"></span></span> Reservations
                         </CNavItem>
                     </Link>
                 </CNavGroup>
+
+                {/** Grupo: Administration */}
                 <CNavGroup
                     toggler={
                         <>
@@ -69,17 +92,19 @@ const AppSidebar = () => {
                     }
                 >
                     <Link href="/users" passHref legacyBehavior>
-                        <CNavItem component="a" active={pathname.startsWith('/users')}>
+                        <CNavItem active={pathname.startsWith('/users')}>
                             <span className="nav-icon"><span className="nav-icon-bullet"></span></span> Users
                         </CNavItem>
                     </Link>
+
                     <Link href="/roles" passHref legacyBehavior>
-                        <CNavItem component="a" active={pathname.startsWith('/roles')}>
+                        <CNavItem active={pathname.startsWith('/roles')}>
                             <span className="nav-icon"><span className="nav-icon-bullet"></span></span> Roles
                         </CNavItem>
                     </Link>
+
                     <Link href="/contacts" passHref legacyBehavior>
-                        <CNavItem component="a" active={pathname.startsWith('/contacts')}>
+                        <CNavItem active={pathname.startsWith('/contacts')}>
                             <span className="nav-icon"><span className="nav-icon-bullet"></span></span> Contacts
                         </CNavItem>
                     </Link>

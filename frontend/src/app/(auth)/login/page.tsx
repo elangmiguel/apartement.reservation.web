@@ -19,12 +19,28 @@ import { cilLockLocked, cilUser } from '@coreui/icons';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'react-toastify';
 
+/**
+ * Componente de interfaz para el formulario de inicio de sesión.
+ * Implementado como Client Component debido al uso de hooks y manejo de estado.
+ */
 const Login = () => {
+    /**
+     * Hook de autenticación que expone la función `login`.
+     */
     const { login } = useAuth();
+
+    /**
+     * Estados controlados para capturar credenciales y manejar el estado de carga.
+     */
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
+    /**
+     * Maneja el envío del formulario.
+     * Ejecuta la función de login, muestra notificaciones de éxito o error
+     * y controla el estado de carga del botón.
+     */
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -39,16 +55,23 @@ const Login = () => {
     };
 
     return (
+        /**
+         * Contenedor principal con fondo y centrado vertical.
+         */
         <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
             <CContainer>
                 <CRow className="justify-content-center">
                     <CCol md={8}>
                         <CCardGroup>
+
+                            {/** Tarjeta principal del formulario de login */}
                             <CCard className="p-4">
                                 <CCardBody>
                                     <CForm onSubmit={handleSubmit}>
                                         <h1>Login</h1>
                                         <p className="text-body-secondary">Sign In to your account</p>
+
+                                        {/** Campo de nombre de usuario */}
                                         <CInputGroup className="mb-3">
                                             <CInputGroupText>
                                                 <CIcon icon={cilUser} />
@@ -61,6 +84,8 @@ const Login = () => {
                                                 required
                                             />
                                         </CInputGroup>
+
+                                        {/** Campo de contraseña */}
                                         <CInputGroup className="mb-4">
                                             <CInputGroupText>
                                                 <CIcon icon={cilLockLocked} />
@@ -74,9 +99,16 @@ const Login = () => {
                                                 required
                                             />
                                         </CInputGroup>
+
+                                        {/** Botones de acciones */}
                                         <CRow>
                                             <CCol xs={6}>
-                                                <CButton color="primary" className="px-4" type="submit" disabled={loading}>
+                                                <CButton
+                                                    color="primary"
+                                                    className="px-4"
+                                                    type="submit"
+                                                    disabled={loading}
+                                                >
                                                     {loading ? 'Logging in...' : 'Login'}
                                                 </CButton>
                                             </CCol>
@@ -89,6 +121,8 @@ const Login = () => {
                                     </CForm>
                                 </CCardBody>
                             </CCard>
+
+                            {/** Tarjeta lateral informativa */}
                             <CCard className="text-white bg-primary py-5" style={{ width: '44%' }}>
                                 <CCardBody className="text-center">
                                     <div>
@@ -96,14 +130,18 @@ const Login = () => {
                                         <p>
                                             Contact your administrator to create an account for the Apartment Reservation System.
                                         </p>
-                                        {/* <Link href="/register">
-                      <CButton color="primary" className="mt-3" active tabIndex={-1}>
-                        Register Now!
-                      </CButton>
-                    </Link> */}
+                                        {/**
+                                         * En caso de habilitar registro:
+                                         * <Link href="/register">
+                                         *   <CButton color="primary" className="mt-3" active tabIndex={-1}>
+                                         *     Register Now!
+                                         *   </CButton>
+                                         * </Link>
+                                         */}
                                     </div>
                                 </CCardBody>
                             </CCard>
+
                         </CCardGroup>
                     </CCol>
                 </CRow>
