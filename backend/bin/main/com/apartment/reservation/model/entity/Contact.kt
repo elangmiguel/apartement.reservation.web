@@ -28,6 +28,6 @@ class Contact(
     var value: String,
 
     @Column(nullable = false)
-    var isMain: Boolean = false,
+    var main: Boolean = false,
 
     ) : BaseModel()

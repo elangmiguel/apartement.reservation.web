@@ -14,5 +14,5 @@ data class ContactRequestDTO(
     @field:NotBlank
     val value: String,
 
-    val isMain: Boolean = false
+    val main: Boolean = false
 )

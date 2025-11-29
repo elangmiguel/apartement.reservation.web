@@ -27,7 +27,7 @@ class Contact(
     @Column(nullable = false)
     var value: String,
 
-    @Column(nullable = false)
-    var isMain: Boolean = false,
+    @Column(name = "main", nullable = false)
+    var main: Boolean = false,
 
     ) : BaseModel()

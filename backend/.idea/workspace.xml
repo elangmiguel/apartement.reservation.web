@@ -5,11 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e07323b-33ee-4759-ba92-f2d7593303ef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.kotlin/sessions/kotlin-compiler-14717563228114340658.salive" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/../LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/(dashboard)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/(dashboard)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/apartment/reservation/dto/patch/ContactPatchDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/apartment/reservation/dto/patch/ContactPatchDTO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/apartment/reservation/dto/request/ContactRequestDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/apartment/reservation/dto/request/ContactRequestDTO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/apartment/reservation/dto/response/ContactResponseDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/apartment/reservation/dto/response/ContactResponseDTO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/apartment/reservation/mapper/ContactMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/apartment/reservation/mapper/ContactMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/main/com/apartment/reservation/model/entity/Contact.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/com/apartment/reservation/model/entity/Contact.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/config/SecurityConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/config/SecurityConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/dto/patch/ContactPatchDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/dto/patch/ContactPatchDTO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/dto/request/ContactRequestDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/dto/request/ContactRequestDTO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/dto/response/ContactResponseDTO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/dto/response/ContactResponseDTO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/mapper/ContactMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/mapper/ContactMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/mapper/PersonMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/mapper/PersonMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/model/entity/Contact.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/model/entity/Contact.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/model/entity/Person.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/model/entity/Person.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/repository/UserRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/apartment/reservation/repository/UserRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/(dashboard)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/(dashboard)/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +68,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/elang/projects/web-apartment-reservation-system/src/main/kotlin/com/apartment/reservation/repository",

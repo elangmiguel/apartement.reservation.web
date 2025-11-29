@@ -20,7 +20,7 @@ open class ContactMapper(
             person = personRef,
             type = dto.type,
             value = dto.value,
-            isMain = dto.isMain
+            main = dto.main
         )
     }
 
@@ -29,7 +29,7 @@ open class ContactMapper(
             personId = entity.person.id!!,
             type = entity.type,
             value = entity.value,
-            isMain = entity.isMain,
+            main = entity.main,
             id = entity.id!!,
             createdAt = entity.createdAt,
             updatedAt = entity.updatedAt
@@ -39,7 +39,7 @@ open class ContactMapper(
     fun updateEntity(entity: Contact, dto: ContactPatchDTO): Contact {
         dto.type?.let { entity.type = it }
         dto.value?.let { entity.value = it }
-        dto.isMain?.let { entity.isMain = it }
+        dto.main?.let { entity.main = it }
         return entity
     }
 }

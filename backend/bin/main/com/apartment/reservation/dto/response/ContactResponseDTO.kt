@@ -7,7 +7,7 @@ class ContactResponseDTO(
     val personId: Long,
     val type: ContactType,
     val value: String,
-    val isMain: Boolean,
+    val main: Boolean,
     id: Long,
     createdAt: LocalDateTime? = null,
     updatedAt: LocalDateTime? = null

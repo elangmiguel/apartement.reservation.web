@@ -18,7 +18,8 @@ open class PersonMapper(
             lastName = dto.lastName,
             identityType = dto.identityType,
             identityValue = dto.identityValue,
-            gender = dto.gender
+            gender = dto.gender,
+            user = null
         )
     }
 

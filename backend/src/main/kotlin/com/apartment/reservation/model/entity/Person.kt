@@ -2,13 +2,16 @@ package com.apartment.reservation.model.entity
 
 import com.apartment.reservation.model.enum.GenderType
 import jakarta.persistence.*
-import org.springframework.data.annotation.Id
 import java.time.LocalDate
-import java.time.LocalDateTime
+
 
 @Entity
 @Table(name = "persons", schema = "management")
 class Person(
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = true)
+    var user: User? = null,
 
     @Column(nullable = false)
     var firstName: String,
@@ -26,5 +29,7 @@ class Person(
 
     @Column(name = "birth_date")
     var birthDate: LocalDate? = null,
+
+
 
     ) : BaseModel()

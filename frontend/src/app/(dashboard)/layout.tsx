@@ -25,7 +25,10 @@ export default function DashboardLayout({
             <AppSidebar />
 
             {/* Área principal del panel */}
-            <div className="wrapper d-flex flex-column min-vh-100 bg-light flex-grow-1 layout-main ml-[256px]">
+            <div
+                className="wrapper d-flex flex-column min-vh-100 bg-light flex-grow-1 layout-main"
+                style={{ marginLeft: '250px' }}
+            >
                 <AppHeader />
 
                 <div className="body flex-grow-1 px-3">
